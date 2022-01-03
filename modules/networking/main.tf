@@ -40,8 +40,8 @@ resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat_eip.id
   # Note that NAT Gateway must be set to public subnet.
   # If it's set to private subnet, routing to Enternet Gateway doesn't exists, so enternet connection can't be established.
-  subnet_id     = element(aws_subnet.public_subnet.*.id, 0)
-  depends_on    = ["aws_internet_gateway.ig"]
+  subnet_id  = element(aws_subnet.public_subnet.*.id, 0)
+  depends_on = ["aws_internet_gateway.ig"]
 
   tags = {
     Name        = "${var.environment}-${element(var.availability_zones, 0)}-nat"
