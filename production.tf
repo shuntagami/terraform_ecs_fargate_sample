@@ -58,3 +58,7 @@ module "ecs" {
   database_password = var.production_database_password
   secret_key_base   = var.production_secret_key_base
 }
+
+module "iam" {
+  source = "./modules/iam"
+}
